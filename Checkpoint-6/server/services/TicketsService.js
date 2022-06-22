@@ -1,9 +1,16 @@
 import { dbContext } from "../db/DbContext";
-import { TowerEventSchema } from "../models/TowerEvent";
+
+
 
 
 
 class TicketsService {
+    async getEventTickets(accountId) {
+        const tickets = await dbContext.Tickets.find({ accountId })
+            .populate('towerEvent')
+            .populate('tier')
+        return tickets
+    }
 
 
 
@@ -13,9 +20,12 @@ class TicketsService {
 
 
         const ticket = await dbContext.Tickets.create(ticketData)
-        await ticket.populate('towerEvent')
+
+        await ticket.populate('event')
         await ticket.populate('account')
-        TowerEventSchema.
+        const towerEvent = await dbContext.TowerEvents.findById(ticketData.eventId)
+        towerEvent.capacity -= 1
+        await towerEvent.save()
         return ticket
     }
 
