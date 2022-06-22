@@ -4,7 +4,7 @@ const ObjectId = Schema.Types.ObjectId
 
 
 export const CommentSchema = new Schema({
-    id: { type: String, required: true },
+
     creatorId: { type: ObjectId, required: true },
     towerEventId: { type: ObjectId, required: true },
     body: { type: String, required: true },
