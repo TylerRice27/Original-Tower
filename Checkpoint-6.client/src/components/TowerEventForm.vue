@@ -1,22 +1,38 @@
 <template>
   <form id="towerEvent-form">
-    <label>Event Name</label>
-    <input v-model="editable.name" type="text" required />
-    <label>Event Description</label>
-    <input v-model="editable.description" type="text" required />
-    <label>Cover Image</label>
-    <input v-model="editable.coverImg" type="text" required />
-    <label>Capacity</label>
-    <input v-model="editable.capacity" type="number" required />
-    <label>Date</label>
-    <input v-model="editable.startDate" type="date" />
-    <label>Type</label>
-    <select name="" id="">
-      <option value="">Concert</option>
-      <option value="">Convention</option>
-      <option value="">Sport</option>
-      <option value="">Digital</option>
-    </select>
+    <div class="col-md-12 d-flex justify-content-center m-2">
+      <label>Event Name:</label>
+      <input v-model="editable.name" type="text" required />
+    </div>
+    <div class="col-md-12 d-flex justify-content-center m-2">
+      <label>Event Description:</label>
+      <input v-model="editable.description" type="text" required />
+    </div>
+    <div class="col-md-12 d-flex justify-content-center m-2">
+      <label>Cover Image:</label>
+      <input v-model="editable.coverImg" type="text" required />
+    </div>
+    <div class="col-md-12 d-flex justify-content-center m-2">
+      <label>Location:</label>
+      <input v-model="editable.location" type="text" required />
+    </div>
+    <div class="col-md-12 d-flex justify-content-center m-2">
+      <label>Capacity:</label>
+      <input v-model="editable.capacity" type="number" required />
+    </div>
+    <div class="col-md-12 d-flex justify-content-center m-2">
+      <label>Date:</label>
+      <input v-model="editable.startDate" type="date" />
+    </div>
+    <div class="col-md-12 d-flex justify-content-center m-2">
+      <label>Type:</label>
+      <select name="" id="">
+        <option value="">Concert</option>
+        <option value="">Convention</option>
+        <option value="">Sport</option>
+        <option value="">Digital</option>
+      </select>
+    </div>
     <button type="button" @click="createTowerEvent">Create Event!</button>
   </form>
 </template>

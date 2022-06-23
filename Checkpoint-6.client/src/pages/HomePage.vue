@@ -41,7 +41,7 @@ export default {
     })
     return {
       filterTowerEvent,
-      towerEvents: computed(() => AppState.events.filter(e => filterTowerEvent.value ? e.category == filterTowerEvent.value : true))
+      towerEvents: computed(() => AppState.events.filter(e => filterTowerEvent.value ? e.type == filterTowerEvent.value : true))
     }
   }
 }

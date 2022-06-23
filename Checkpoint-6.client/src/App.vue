@@ -4,6 +4,12 @@
   </header>
   <main>
     <router-view />
+    <Modal id="create-towerEvent">
+      <template #header>Create a Event</template>
+      <template #body>
+        <TowerEventForm />
+      </template>
+    </Modal>
   </main>
   <footer></footer>
 </template>

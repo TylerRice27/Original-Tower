@@ -1,6 +1,7 @@
 <template>
   <div
     class="event-card card m-1"
+    @click="selectTowerEvent"
     :style="`background-image: url(${towerEvent.coverImg});`"
   >
     <!-- this is not my image anymore not is on my background image -->
@@ -36,15 +37,19 @@ export default {
 
     return {
 
-      // come back later to figure out how to format the date
-      time() {
-        // towerEvent.startDate = formatDate.toDateString()
-
-        //  moment().format("MMM DD YY");
+      selectTowerEvent() {
+        router.push({ name: 'EventDetails', params: { id: props.towerEvent.id } })
       }
+
+      // come back later to figure out how to format the date
+      // time() {
+      // towerEvent.startDate = formatDate.toDateString()
+
+      //  moment().format("MMM DD YY");
     }
-  },
+  }
 }
+
 
 
 
