@@ -58,9 +58,10 @@ class TicketsService {
         if (ticket.accountId.toString() != userId) {
             throw new Forbidden("Can not remove another users ticket")
         }
-        // towerEvent.capacity += 1
-        // await towerEvent.save()
-        await ticket.remove()
+        const towerEvent = await dbContext.TowerEvents.findById(ticket.eventId)
+        towerEvent.capacity += 1
+        await towerEvent.save()
+        return ticket.remove()
     }
 
 
