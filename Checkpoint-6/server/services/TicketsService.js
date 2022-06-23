@@ -54,11 +54,12 @@ class TicketsService {
     // able to delete but need to figure out capacity problem
     async delete(id, userId) {
         const ticket = await this.getById(id)
+        // const towerEvent = await dbContext.TowerEvents.findById(id)
         if (ticket.accountId.toString() != userId) {
             throw new Forbidden("Can not remove another users ticket")
         }
-        // const towerEvent = await dbContext.TowerEvents.findById(id)
         // towerEvent.capacity += 1
+        // await towerEvent.save()
         await ticket.remove()
     }
 
