@@ -37,15 +37,16 @@ class TicketsService {
 
 
     async create(ticketData) {
+        const towerEvent = await dbContext.TowerEvents.findById(ticketData.eventId)
 
-
+        if (towerEvent.capacity == 0) {
+            throw new BadRequest("Tickets are all sold out")
+        }
 
 
         const ticket = await dbContext.Tickets.create(ticketData)
-
         await ticket.populate('event')
         await ticket.populate('account')
-        const towerEvent = await dbContext.TowerEvents.findById(ticketData.eventId)
         towerEvent.capacity -= 1
         await towerEvent.save()
         return ticket
@@ -54,7 +55,7 @@ class TicketsService {
     // able to delete but need to figure out capacity problem
     async delete(id, userId) {
         const ticket = await this.getById(id)
-        // const towerEvent = await dbContext.TowerEvents.findById(id)
+
         if (ticket.accountId.toString() != userId) {
             throw new Forbidden("Can not remove another users ticket")
         }
