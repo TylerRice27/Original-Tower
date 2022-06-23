@@ -5,6 +5,7 @@
         <img alt="logo" src="../assets/img/cw-logo.png" height="45" />
       </div>
     </router-link>
+
     <button
       class="navbar-toggler"
       type="button"
@@ -27,6 +28,16 @@
           </router-link>
         </li>
       </ul>
+      <div class="create-event">
+        <button
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#create-towerEvent"
+          @click="createTowerEvent"
+        >
+          New Event!
+        </button>
+      </div>
       <!-- LOGIN COMPONENT HERE -->
       <Login />
     </div>
@@ -52,5 +63,8 @@ a:hover {
   border-bottom: 2px solid var(--bs-success);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+}
+.create-event {
+  margin-right: 32em;
 }
 </style>

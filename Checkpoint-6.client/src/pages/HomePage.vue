@@ -1,36 +1,51 @@
 <template>
-  <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-    <div class="home-card p-5 bg-white rounded elevation-3">
-      <img src="https://bcw.blob.core.windows.net/public/img/8600856373152463" alt="CodeWorks Logo" class="rounded-circle">
-      <h1 class="my-5 bg-dark text-white p-3 rounded text-center">
-        Vue 3 Starter
-      </h1>
+  <div class="home container">
+    <div class="row card bg-dark rounded mt-4">
+      <div class="d-flex justify-content-between col-md-12">
+        <h5 class="selectable" @click="towerFilter = ''">All</h5>
+        <h5 class="selectable" @click="towerFilter = 'concert'">Concerts</h5>
+        <h5 class="selectable" @click="towerFilter = 'convention'">
+          Conventions
+        </h5>
+        <h5 class="selectable" @click="towerFilter = 'sport'">Sports</h5>
+        <h5 class="selectable" @click="towerFilter = 'digital'">Digital</h5>
+      </div>
+    </div>
+
+    <div class="row events-row">
+      <TowerEvent
+        v-for="t in towerEvents"
+        :key="t.id"
+        :towerEvent="t"
+        class="col-md-4 selectable"
+      />
     </div>
   </div>
 </template>
 
 <script>
+import { computed, onMounted, ref } from '@vue/runtime-core'
+import Pop from '../utils/Pop'
+import { towerEventsService } from '../services/TowerEventsService'
+import { AppState } from '../AppState'
 export default {
-  name: 'Home'
+  name: 'Home',
+  setup() {
+    const filterTowerEvent = ref('')
+    onMounted(async () => {
+      try {
+        await towerEventsService.getEvents()
+      } catch (error) {
+        Pop.error(error)
+      }
+    })
+    return {
+      filterTowerEvent,
+      towerEvents: computed(() => AppState.events.filter(e => filterTowerEvent.value ? e.category == filterTowerEvent.value : true))
+    }
+  }
 }
 </script>
 
 <style scoped lang="scss">
-.home{
-  display: grid;
-  height: 80vh;
-  place-content: center;
-  text-align: center;
-  user-select: none;
-  .home-card{
-    width: 50vw;
-    > img{
-      height: 200px;
-      max-width: 200px;
-      width: 100%;
-      object-fit: contain;
-      object-position: center;
-    }
-  }
-}
 </style>
