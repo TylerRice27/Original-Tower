@@ -6,7 +6,7 @@ const ObjectId = Schema.Types.ObjectId
 export const CommentSchema = new Schema({
 
     creatorId: { type: ObjectId, required: true },
-    towerEventId: { type: ObjectId, required: true },
+    eventId: { type: ObjectId, required: true },
     body: { type: String, required: true },
     isAttending: { type: Boolean, default: false },
 }, { timestamps: true, toJSON: { virtuals: true } }
