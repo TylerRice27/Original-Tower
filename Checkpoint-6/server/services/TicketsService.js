@@ -24,11 +24,11 @@ class TicketsService {
         return ticket
     }
 
-    // come back to this method I retured an array but
+    // come back to this method I returned an array but
     // it also contains tickets for other events and maybe
     // different object comparison
-    async getEventTickets(towerEventId) {
-        const tickets = await dbContext.Tickets.find({ towerEventId })
+    async getEventTickets(eventId) {
+        const tickets = await dbContext.Tickets.find({ eventId })
             .populate('account', 'name picture')
 
         return tickets
