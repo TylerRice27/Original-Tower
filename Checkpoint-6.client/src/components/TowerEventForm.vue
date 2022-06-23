@@ -1,5 +1,6 @@
 <template>
   <form id="towerEvent-form">
+    <!-- <div class="row"> -->
     <div class="col-md-12 d-flex justify-content-center m-2">
       <label>Event Name:</label>
       <input v-model="editable.name" type="text" required />
@@ -34,6 +35,7 @@
       </select>
     </div>
     <button type="button" @click="createTowerEvent">Create Event!</button>
+    <!-- </div> -->
   </form>
 </template>
 
