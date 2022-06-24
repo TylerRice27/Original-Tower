@@ -116,9 +116,11 @@ export default {
       account: computed(() => AppState.account),
       comments: computed(() => AppState.comments),
       isAttending: computed(() => {
+        //NOTE have to do this
         // try to find if I have a ticket with this event Id
         // if i do, return true
         // return false
+        // accountId == ticket = true
       }),
 
 

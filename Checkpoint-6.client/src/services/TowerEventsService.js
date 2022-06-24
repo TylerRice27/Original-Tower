@@ -10,6 +10,7 @@ class TowerEventsService {
         const res = await api.post('api/events', body)
         logger.log('created Event', res.data)
         AppState.events.push(res.data)
+        return res.data
     }
 
     async getEvents(query = '') {

@@ -1,5 +1,5 @@
 <template>
-  <form id="towerEvent-form">
+  <form @submit.prevent="createTowerEvent" id="towerEvent-form">
     <!-- <div class="row"> -->
     <div class="col-md-12 d-flex justify-content-center m-2">
       <label>Event Name:</label>
@@ -34,7 +34,7 @@
         <option value="digital">Digital</option>
       </select>
     </div>
-    <button type="button" @click="createTowerEvent">Create Event!</button>
+    <button>Create Event!</button>
     <!-- </div> -->
   </form>
 </template>
@@ -45,16 +45,20 @@ import { ref } from '@vue/reactivity'
 import Pop from '../utils/Pop'
 import { towerEventsService } from '../services/TowerEventsService'
 import { Modal } from 'bootstrap'
+import { useRouter } from 'vue-router'
+import { AppState } from '../AppState'
 export default {
-  props: { towerEvent: { type: Object, required: false } },
-  setup(props) {
+  setup() {
     const editable = ref({})
+    const router = useRouter()
     return {
       editable,
       async createTowerEvent() {
         try {
-          await towerEventsService.createTowerEvent(editable.value)
+          // NOTE I need to get something back from this method... I should alias it out
+          const tEvent = await towerEventsService.createTowerEvent(editable.value)
           Modal.getOrCreateInstance(document.getElementById('create-towerEvent')).hide()
+          router.push({ name: 'EventDetails', params: { id: tEvent.id } })
           Pop.toast('Event Created!')
         } catch (error) {
           Pop.error(error)
