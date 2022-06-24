@@ -34,27 +34,30 @@
         cols="30"
         rows="4"
         placeholder="Tell Us What You Think!"
+        v-model="editable.body"
       >
       </textarea>
       <div class="col-md-12 d-flex justify-content-end">
         <button class="btn btn-primary mt-2">Create!</button>
       </div>
     </form>
-    <!-- <Comment /> -->
+    <Comment v-for="c in comments" :key="c.id" :comment="c" />
   </div>
 </template>
 
 <script>
-import { computed, watchEffect } from '@vue/runtime-core'
+import { computed, ref, watchEffect } from '@vue/runtime-core'
 import { useRoute } from 'vue-router'
 import Pop from '../utils/Pop'
 import { towerEventsService } from '../services/TowerEventsService'
 import { ticketsService } from '../services/TicketsService'
 import { AppState } from '../AppState'
 import { commentsService } from '../services/CommentsService'
+import { logger } from '../utils/Logger'
 export default {
   name: 'EventPage',
   setup() {
+    const editable = ref({ eventId: '' })
     const route = useRoute()
     watchEffect(async () => {
       try {
@@ -62,16 +65,30 @@ export default {
         await commentsService.getComments(route.params.id)
         await towerEventsService.getEvent(route.params.id)
         await ticketsService.getTicketsByEvent(route.params.id)
+        editable.value.eventId = route.params.id
+
       } catch (error) {
         Pop.toast(error)
       }
     })
 
     return {
+      editable,
       towerEvent: computed(() => AppState.activeEvent),
       tickets: computed(() => AppState.tickets),
       account: computed(() => AppState.account),
       comments: computed(() => AppState.comments),
+
+
+      async createComment() {
+        try {
+          editable.value.eventId = route.params.id
+          await commentsService.createComment(editable.value)
+        } catch (error) {
+          Pop.toast(error.message)
+          logger.error(error)
+        }
+      },
 
       async createTicket() {
         try {
@@ -83,7 +100,8 @@ export default {
           // NOTE not done here need to make sure they dont already have a ticket
           // Sold out of tickets OR canceled event
         } catch (error) {
-
+          Pop.toast(error.message)
+          logger.error(error)
         }
       },
 

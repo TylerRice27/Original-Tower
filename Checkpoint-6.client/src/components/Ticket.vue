@@ -1,8 +1,12 @@
 <template>
   <div class="tickets">
     <div v-for="t in tickets" :key="t.id">
-      <img class="rounded-pill" :src="t.account?.picture" alt="" />
-      <p>{{ t.account?.name }}</p>
+      <img
+        class="hv rounded-pill"
+        :title="t.account?.name"
+        :src="t.account?.picture"
+        alt=""
+      />
     </div>
   </div>
 </template>
@@ -35,4 +39,6 @@ export default {
 
 
 <style lang="scss" scoped>
+.hv:hover {
+}
 </style>

@@ -8,8 +8,9 @@
       />
       {{ comment.creator.name }}
     </h2>
+    <h4 class="text-center">{{ comment.body }}</h4>
 
-    <h6>{{ comment.body }}</h6>
+    <img class="img-fluid" :src="comment.imgUrl" alt="" />
     <div class="d-flex justify-content-between col-md-12"></div>
     <button
       v-show="comment.creatorId == account.id"
@@ -42,9 +43,16 @@ export default {
   setup(props) {
     const router = useRouter()
     return {
+
+
       account: computed(() => AppState.account),
 
 
+
+
+
+
+      // come back to this later
       async removeComment() {
         try {
           if (await Pop.confirm("Do you want to Delete?")) {
