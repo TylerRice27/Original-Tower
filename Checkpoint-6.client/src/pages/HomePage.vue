@@ -38,11 +38,17 @@ export default {
       } catch (error) {
         Pop.error(error)
       }
+
+
     })
     return {
       filterTowerEvent,
-      towerEvents: computed(() => AppState.events.filter(e => filterTowerEvent.value ? e.type == filterTowerEvent.value : true))
+      towerEvents: computed(() => AppState.events.filter(e => filterTowerEvent.value ? e.type == filterTowerEvent.value : true)),
+
+
+
     }
+
   }
 }
 </script>

@@ -1,6 +1,11 @@
 <template>
-  <div class="event">
-    <img :src="towerEvent.coverImg" alt="" />
+  <div class="event-page">
+    <section id="towerEvent">
+      <img :src="towerEvent.coverImg" alt="" />
+      <div>
+        <h4>{{ towerEvent.name }}</h4>
+      </div>
+    </section>
   </div>
 </template>
 

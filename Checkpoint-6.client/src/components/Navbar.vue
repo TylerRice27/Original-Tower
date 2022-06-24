@@ -2,7 +2,12 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <img alt="logo" src="../assets/img/cw-logo.png" height="45" />
+        <img
+          class="logo"
+          alt="logo"
+          src="https://static.vecteezy.com/system/resources/thumbnails/000/547/255/small/real-39.jpg"
+          height="45"
+        />
       </div>
     </router-link>
 
