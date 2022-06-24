@@ -3,6 +3,12 @@
     <section class="d-flex m-3 row" id="towerEvent">
       <img class="tower-pic img-fluid" :src="towerEvent.coverImg" alt="" />
       <div class="m-3 col-md-4">
+        <div
+          v-if="towerEvent.isCanceled == true"
+          class="bg-danger rounded col-md-2"
+        >
+          <h6>Cancelled!</h6>
+        </div>
         <h4>{{ towerEvent.name }}</h4>
         <h5 class="text-success">{{ towerEvent.location }}</h5>
         <h6 class="p-1" v-if="towerEvent.startDate">
@@ -13,13 +19,16 @@
         <button class="btn btn-primary mt-5" @click="createTicket">
           Attend <i class="mdi mdi-thumb-up"></i>
         </button>
+        <button class="btn btn-danger mt-5 ms-5" @click="cancelEvent">
+          Cancel Event
+        </button>
       </div>
     </section>
   </div>
   <p class="m-3">Who is Attending</p>
   <!-- <div class="row"> -->
   <div class="col-md-12 card bg-dark">
-    <Ticket />
+    <Ticket v-for="t in tickets" :key="t.id" />
   </div>
   <!-- </div> -->
   <div class="row mt-2 justify-content-center">
@@ -97,8 +106,18 @@ export default {
             return
           }
           const ticket = AppState.eventTickets.find(e => e.eventId == route.params.id)
-          // NOTE not done here need to make sure they dont already have a ticket
+          // NOTE not done here need to make sure they don't already have a ticket
           // Sold out of tickets OR canceled event
+        } catch (error) {
+          Pop.toast(error.message)
+          logger.error(error)
+        }
+      },
+
+      async cancelEvent() {
+        try {
+          const res = await towerEventsService.cancelEvent(route.params.id)
+
         } catch (error) {
           Pop.toast(error.message)
           logger.error(error)

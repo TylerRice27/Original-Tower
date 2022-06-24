@@ -1,6 +1,6 @@
 <template>
   <div class="tickets">
-    <div v-for="t in tickets" :key="t.id">
+    <div>
       <img
         class="hv rounded-pill"
         :title="t.account?.name"

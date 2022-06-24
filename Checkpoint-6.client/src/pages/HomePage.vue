@@ -31,7 +31,7 @@ import { AppState } from '../AppState'
 export default {
   name: 'Home',
   setup(props) {
-    const filterTowerEvent = ref('')
+    const towerFilter = ref('')
     onMounted(async () => {
       try {
         await towerEventsService.getEvents()
@@ -42,8 +42,8 @@ export default {
 
     })
     return {
-      filterTowerEvent,
-      towerEvents: computed(() => AppState.events.filter(e => filterTowerEvent.value ? e.type == filterTowerEvent.value : true)),
+      // filterTowerEvent,
+      towerEvents: computed(() => AppState.events.filter(e => towerFilter.value ? e.type == towerFilter.value : true)),
 
 
 
