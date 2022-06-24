@@ -42,7 +42,7 @@ export default {
 
     })
     return {
-      // filterTowerEvent,
+      towerFilter,
       towerEvents: computed(() => AppState.events.filter(e => towerFilter.value ? e.type == towerFilter.value : true)),
 
 

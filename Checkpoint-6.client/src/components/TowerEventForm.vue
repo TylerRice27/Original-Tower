@@ -23,15 +23,15 @@
     </div>
     <div class="col-md-12 d-flex justify-content-center m-2">
       <label>Date:</label>
-      <input v-model="editable.startDate" type="date" />
+      <input v-model="editable.startDate" type="date" required />
     </div>
     <div class="col-md-12 d-flex justify-content-center m-2">
       <label>Type:</label>
-      <select name="" id="">
-        <option value="">Concert</option>
-        <option value="">Convention</option>
-        <option value="">Sport</option>
-        <option value="">Digital</option>
+      <select v-model="editable.type" required>
+        <option value="concert">Concert</option>
+        <option value="convention">Convention</option>
+        <option value="sport">Sport</option>
+        <option value="digital">Digital</option>
       </select>
     </div>
     <button type="button" @click="createTowerEvent">Create Event!</button>
