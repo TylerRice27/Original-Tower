@@ -11,6 +11,12 @@ class TicketsService {
         const res = await api.get(`api/events/${eventId}/tickets`)
         AppState.tickets = res.data
     }
+
+    async createTicket(ticketData) {
+        const res = await api.post('/api/tickets', ticketData)
+        AppState.tickets.push(res.data)
+        AppState.eventTickets.push(res.data)
+    }
 }
 
 

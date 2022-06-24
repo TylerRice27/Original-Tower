@@ -7,7 +7,7 @@
         <h5 class="text-success">{{ towerEvent.location }}</h5>
         <p class="mt-5">{{ towerEvent.description }}</p>
         <h3 class="mt-5 pt-3">{{ towerEvent.capacity }} Spots Left</h3>
-        <button class="btn btn-primary mt-5">
+        <button class="btn btn-primary mt-5" @click="createTicket">
           Attend <i class="mdi mdi-thumb-up"></i>
         </button>
       </div>
@@ -51,9 +51,21 @@ export default {
     return {
       towerEvent: computed(() => AppState.activeEvent),
       tickets: computed(() => AppState.tickets),
+      account: computed(() => AppState.account),
 
+      async createTicket() {
+        try {
+          if (!AppState.account.id) {
+            Pop.toast("You must login to buy a ticket", "info")
+            return
+          }
+          const ticket = AppState.eventTickets.find(e => e.eventId == route.params.id)
+          // NOTE not done here need to make sure they dont already have a ticket
+          // Sold out of tickets OR canceled event
+        } catch (error) {
 
-
+        }
+      }
 
 
       formatDate(rawDate) {
