@@ -3,8 +3,8 @@
     <div>
       <img
         class="hv rounded-pill"
-        :title="t.account?.name"
-        :src="t.account?.picture"
+        :title="ticket.account?.name"
+        :src="ticket.account?.picture"
         alt=""
       />
     </div>

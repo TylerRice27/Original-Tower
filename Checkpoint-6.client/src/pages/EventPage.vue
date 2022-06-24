@@ -5,7 +5,7 @@
       <div class="m-3 col-md-4">
         <div
           v-if="towerEvent.isCanceled == true"
-          class="bg-danger rounded col-md-2"
+          class="bg-danger rounded col-md-3"
         >
           <h6>Cancelled!</h6>
         </div>
@@ -16,10 +16,34 @@
         </h6>
         <p class="mt-5">{{ towerEvent.description }}</p>
         <h3 class="mt-5 pt-3">{{ towerEvent.capacity }} Spots Left</h3>
-        <button class="btn btn-primary mt-5" @click="createTicket">
+        <button
+          v-if="towerEvent.isCanceled"
+          class="btn btn-danger mt-5"
+          disabled
+        >
+          Canceled <i class="mdi mdi-thumb-down"></i>
+        </button>
+        <!-- If it is sold out button goes away -->
+        <button
+          v-else-if="towerEvent.capacity == 0"
+          class="btn btn-primary mt-5"
+          disabled
+        >
+          Sold Out <i class="mdi mdi-thumb-up"></i>
+        </button>
+        <button v-else-if="isAttending" class="btn btn-warning mt-5" disabled>
+          Already Attending <i class="mdi mdi-thumb-up"></i>
+        </button>
+        <button v-else class="btn btn-primary mt-5" @click="createTicket">
           Attend <i class="mdi mdi-thumb-up"></i>
         </button>
-        <button class="btn btn-danger mt-5 ms-5" @click="cancelEvent">
+
+        <!-- canceled, sold out, has ticket, get ticket -->
+        <button
+          v-show="towerEvent.creatorId == account.id"
+          class="btn btn-danger mt-5 ms-5"
+          @click="cancelEvent"
+        >
           Cancel Event
         </button>
       </div>
@@ -28,9 +52,10 @@
   <p class="m-3">Who is Attending</p>
   <!-- <div class="row"> -->
   <div class="col-md-12 card bg-dark">
-    <Ticket v-for="t in tickets" :key="t.id" />
+    <Ticket v-for="t in tickets" :key="t.id" :ticket="t" />
   </div>
   <!-- </div> -->
+  <!-- this div is creating the side scroll come back and fix -->
   <div class="row mt-2 justify-content-center">
     <form
       class="pb-4 d-flex rounded flex-column bg-dark col-md-8"
@@ -70,11 +95,14 @@ export default {
     const route = useRoute()
     watchEffect(async () => {
       try {
-        AppState.comments = [];
-        await commentsService.getComments(route.params.id)
-        await towerEventsService.getEvent(route.params.id)
-        await ticketsService.getTicketsByEvent(route.params.id)
-        editable.value.eventId = route.params.id
+        if (route.params.id) {
+
+          AppState.comments = [];
+          await commentsService.getComments(route.params.id)
+          await towerEventsService.getEvent(route.params.id)
+          await ticketsService.getTicketsByEvent(route.params.id)
+          editable.value.eventId = route.params.id
+        }
 
       } catch (error) {
         Pop.toast(error)
@@ -87,6 +115,11 @@ export default {
       tickets: computed(() => AppState.tickets),
       account: computed(() => AppState.account),
       comments: computed(() => AppState.comments),
+      isAttending: computed(() => {
+        // try to find if I have a ticket with this event Id
+        // if i do, return true
+        // return false
+      }),
 
 
       async createComment() {
@@ -104,8 +137,12 @@ export default {
           if (!AppState.account.id) {
             Pop.toast("You must login to buy a ticket", "info")
             return
+          } else {
+            // const ticket = AppState.eventTickets.find(e => e.eventId == route.params.id)
+            const ticket = { accountId: AppState.account.id, eventId: route.params.id }
+            await ticketsService.createTicket(ticket)
+            Pop.toast("Enjoy the Event", 'success')
           }
-          const ticket = AppState.eventTickets.find(e => e.eventId == route.params.id)
           // NOTE not done here need to make sure they don't already have a ticket
           // Sold out of tickets OR canceled event
         } catch (error) {
