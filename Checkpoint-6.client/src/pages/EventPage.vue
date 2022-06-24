@@ -17,9 +17,11 @@
     </section>
   </div>
   <p class="m-3">Who is Attending</p>
-  <div class="row">
-    <div class="col-md-12 card bg-dark"></div>
+  <!-- <div class="row"> -->
+  <div class="col-md-12 card bg-dark">
+    <Ticket />
   </div>
+  <!-- </div> -->
 </template>
 
 <script>
@@ -28,6 +30,7 @@ import { useRoute } from 'vue-router'
 import { logger } from '../utils/Logger'
 import Pop from '../utils/Pop'
 import { towerEventsService } from '../services/TowerEventsService'
+import { ticketsService } from '../services/TicketsService'
 import { AppState } from '../AppState'
 export default {
   name: 'EventPage',
@@ -37,6 +40,7 @@ export default {
     watchEffect(async () => {
       try {
         await towerEventsService.getEvent(route.params.id)
+        await ticketsService.getTicketsByEvent(route.params.id)
 
       } catch (error) {
         logger.error(error)
@@ -46,6 +50,7 @@ export default {
 
     return {
       towerEvent: computed(() => AppState.activeEvent),
+      tickets: computed(() => AppState.tickets),
 
 
 
