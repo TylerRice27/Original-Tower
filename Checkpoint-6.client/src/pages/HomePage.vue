@@ -30,7 +30,7 @@ import { towerEventsService } from '../services/TowerEventsService'
 import { AppState } from '../AppState'
 export default {
   name: 'Home',
-  setup() {
+  setup(props) {
     const filterTowerEvent = ref('')
     onMounted(async () => {
       try {

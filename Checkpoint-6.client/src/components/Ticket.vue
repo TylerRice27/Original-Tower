@@ -1,7 +1,7 @@
 <template>
   <div class="tickets">
     <div v-for="t in tickets" :key="t.id">
-      <img :src="t.account?.picture" alt="" />
+      <img class="rounded-pill" :src="t.account?.picture" alt="" />
       <p>{{ t.account?.name }}</p>
     </div>
   </div>
