@@ -13,7 +13,6 @@ class TicketsService {
     }
 
     async createTicket(ticketData) {
-        debugger
         const res = await api.post('/api/tickets', ticketData)
         AppState.tickets.push(res.data)
         AppState.eventTickets.push(res.data)

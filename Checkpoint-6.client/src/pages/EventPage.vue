@@ -115,13 +115,18 @@ export default {
       tickets: computed(() => AppState.tickets),
       account: computed(() => AppState.account),
       comments: computed(() => AppState.comments),
-      isAttending: computed(() => {
+
+      // Try to finish this function later after writing out my account page
+      isAttending: computed(() => AppState.eventTickets.find(t => AppState.tickets == accountId)
+
+        // TODO THIS IS ONE OF MY LAST REQUIREMENTS TO PAST
+        // AppState.tickets.find(t => t.id == accountId)
         //NOTE have to do this
         // try to find if I have a ticket with this event Id
         // if i do, return true
         // return false
         // accountId == ticket = true
-      }),
+      ),
 
 
       async createComment() {
