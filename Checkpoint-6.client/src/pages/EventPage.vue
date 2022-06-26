@@ -9,6 +9,9 @@
         >
           <h6>Cancelled!</h6>
         </div>
+        <div v-if="towerEvent.capacity == 0" class="bg-danger rounded col-md-3">
+          <h6>Sold Out!</h6>
+        </div>
         <h4>{{ towerEvent.name }}</h4>
         <h5 class="text-success">{{ towerEvent.location }}</h5>
         <h6 class="p-1" v-if="towerEvent.startDate">
@@ -71,7 +74,7 @@
         v-model="editable.body"
       >
       </textarea>
-      <div class="col-md-12 d-flex justify-content-end">
+      <div class="justify-content-end">
         <button class="btn btn-primary mt-2">Create!</button>
       </div>
     </form>
@@ -116,17 +119,24 @@ export default {
       account: computed(() => AppState.account),
       comments: computed(() => AppState.comments),
 
-      // Try to finish this function later after writing out my account page
-      isAttending: computed(() => AppState.eventTickets.find(t => AppState.tickets == accountId)
+      data() {
+        return {
+          isAttending: true
+        }
+      },
 
-        // TODO THIS IS ONE OF MY LAST REQUIREMENTS TO PAST
-        // AppState.tickets.find(t => t.id == accountId)
-        //NOTE have to do this
-        // try to find if I have a ticket with this event Id
-        // if i do, return true
-        // return false
-        // accountId == ticket = true
-      ),
+      // Try to finish this function later after writing out my account page
+
+      // isAttending: computed(() => AppState.tickets.find(t => t.id == eventId)
+
+      // TODO THIS IS ONE OF MY LAST REQUIREMENTS TO PASS
+      // AppState.tickets.find(t => t.id == accountId)
+      //NOTE have to do this
+      // try to find if I have a ticket with this event Id
+      // if i do, return true
+      // return false
+      // accountId == ticket = true
+      // ),
 
 
       async createComment() {

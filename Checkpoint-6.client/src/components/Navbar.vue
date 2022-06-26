@@ -28,6 +28,7 @@
       </ul>
       <div class="create-event">
         <button
+          v-if="account.id"
           class="btn btn-primary"
           data-bs-toggle="modal"
           data-bs-target="#create-towerEvent"
@@ -43,9 +44,14 @@
 </template>
 
 <script>
+import { computed } from '@vue/reactivity';
+import { AppState } from '../AppState';
 export default {
   setup() {
-    return {};
+    return {
+      account: computed(() => AppState.account),
+
+    };
   },
 };
 </script>

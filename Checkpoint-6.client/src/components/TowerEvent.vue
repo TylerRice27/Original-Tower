@@ -8,8 +8,11 @@
     <!-- <img class="img-fluid" :src="towerEvent.coverImg" alt="" /> -->
     <div class="text-block">
       <h5>{{ towerEvent.name }}</h5>
+
       <p>{{ towerEvent.location }}</p>
-      <p v-if="towerEvent.startDate">{{ formatDate(towerEvent.startDate) }}</p>
+      <p v-if="towerEvent.startDate">
+        {{ formatDate(towerEvent.startDate) }}
+      </p>
       <p>{{ towerEvent.type }}</p>
       <div class="text-end">
         <p>{{ towerEvent.capacity }}</p>
