@@ -10,13 +10,13 @@
   </section>
   <section id="event-tickets">
     <h5>My Tickets for attending Events</h5>
-    <div class="row">
-      <!-- <TowerEvent
+    <div class="row" v-show="myTickets">
+      <TowerEvent
         v-for="t in towerEvents"
         :key="t.id"
         :towerEvent="t"
         class="col-md-4 selectable"
-      /> -->
+      />
     </div>
     <!-- v-for="t in towerEvents" :key="t.id" -->
     <div class="row card">
@@ -50,7 +50,9 @@ export default {
     })
     return {
       account: computed(() => AppState.account),
+      myTickets: computed(() => AppState.accountTickets),
       towerEvents: computed(() => AppState.accountTickets),
+      // towerEvents: computed(() => AppState.events)
     }
   }
 }

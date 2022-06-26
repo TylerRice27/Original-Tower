@@ -119,15 +119,11 @@ export default {
       account: computed(() => AppState.account),
       comments: computed(() => AppState.comments),
 
-      data() {
-        return {
-          isAttending: true
-        }
-      },
+
 
       // Try to finish this function later after writing out my account page
 
-      // isAttending: computed(() => AppState.tickets.find(t => t.id == eventId)
+      isAttending: computed(() => AppState.tickets.find(t => AppState.activeEvent.id == t.eventId)),
 
       // TODO THIS IS ONE OF MY LAST REQUIREMENTS TO PASS
       // AppState.tickets.find(t => t.id == accountId)
@@ -136,7 +132,6 @@ export default {
       // if i do, return true
       // return false
       // accountId == ticket = true
-      // ),
 
 
       async createComment() {

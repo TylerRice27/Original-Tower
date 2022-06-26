@@ -18,7 +18,6 @@ class AccountService {
     const res = await api.get('account/tickets')
     logger.log('My event tickets', res.data)
     AppState.accountTickets = res.data
-
   }
 }
 
