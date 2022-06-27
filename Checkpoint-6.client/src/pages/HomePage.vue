@@ -12,7 +12,7 @@
       </div>
     </div>
 
-    <div class="row events-row">
+    <div class="row justify-content-center events-row">
       <TowerEvent
         v-for="t in towerEvents"
         :key="t.id"

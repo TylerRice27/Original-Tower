@@ -17,6 +17,11 @@ class TicketsService {
         AppState.tickets.push(res.data)
         AppState.eventTickets.push(res.data)
     }
+
+    async deleteTicket(id) {
+        await api.delete('api/tickets/' + id)
+        AppState.accountTickets = AppState.accountTickets.filter(t => t.id != id)
+    }
 }
 
 

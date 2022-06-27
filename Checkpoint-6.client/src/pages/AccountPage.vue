@@ -3,7 +3,7 @@
     <img class="rounded-pill m-3" :src="account.picture" alt="" />
   </div>
   <section id="account-events">
-    <h5>My Events</h5>
+    <!-- <h5>My Events</h5> -->
     <div id="events-container">
       <div></div>
     </div>
@@ -30,7 +30,13 @@
         {{ t.event?.name }}
         <h6 class="p-1 pt-2">Description</h6>
         {{ t.event?.description }}
+        <h6 class="p-1 pt-2">Event Date</h6>
+
+        {{ formatDate(t.event?.startDate) }}
       </div>
+      <button @click="deleteTicket" class="btn btn-danger">
+        Refund Ticket
+      </button>
     </div>
     <!-- {{ towerEvents }} -->
     <div class="events-container"></div>
@@ -43,16 +49,21 @@ import { AppState } from '../AppState'
 import { accountService } from '../services/AccountService'
 import Pop from '../utils/Pop'
 import { towerEventsService } from '../services/TowerEventsService'
+import { useRouter } from 'vue-router'
+import { ticketsService } from '../services/TicketsService'
+import { logger } from '../utils/Logger'
+
 export default {
 
   name: 'Account',
 
   setup(props) {
-
+    // const route = useRouter()
     onMounted(async () => {
       try {
         await accountService.getMyTickets()
         await towerEventsService.getEvents()
+        // await towerEventsService.getEvent(route.props.id)
       } catch (error) {
         Pop.error(error)
       }
@@ -60,8 +71,34 @@ export default {
 
     })
     return {
+      // selectTowerEvent() {
+      //   route.push({ name: 'EventDetails', params: { id: props.towerEvent.id } })
+      // },
+      async deleteTicket(ticketId) {
+        try {
+          debugger
+          // if (await Pop.confirm('Cancel Ticket?', 'are you sure?', 'info', 'yes delete it')) 
+          {
+            await ticketsService.deleteTicket(ticketId)
+          }
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error')
+        }
+
+      },
+      formatDate(rawDate) {
+        let time = new Date(rawDate)
+        // let month = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(time)
+        let day = time.toDateString()
+        // let year = time.getUTCFullYear()
+        return ` ${day}`
+      },
+
+
       account: computed(() => AppState.account),
-      myTickets: computed(() => AppState.accountTickets),
+      tickets: computed(() => AppState.tickets),
+      // myTickets: computed(() => AppState.accountTickets),
       // this one allows my tickets with no info on it
       towerEvents: computed(() => AppState.accountTickets),
       // this one allows info on it but wont show any ticket info

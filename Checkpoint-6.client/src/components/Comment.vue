@@ -8,11 +8,12 @@
       />
       {{ comment.creator.name }}
     </h2>
-    <h4 class="text-center">{{ comment.body }}</h4>
+    <h4 class="ms-2">{{ comment.body }}</h4>
 
     <img class="img-fluid" :src="comment.imgUrl" alt="" />
     <div class="d-flex justify-content-between col-md-12"></div>
     <button
+      type="button"
       v-show="comment.creatorId == account.id"
       class="
         delete-button
@@ -25,7 +26,7 @@
       "
       @click="removeComment"
     >
-      <i class="mdi mdi-delete-forever"></i>
+      <i class="mdi mdi-delete-forever">Delete</i>
     </button>
   </div>
 </template>
