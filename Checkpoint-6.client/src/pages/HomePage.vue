@@ -1,5 +1,5 @@
 <template>
-  <div class="home container">
+  <div class="home container-fluid">
     <div class="row card bg-dark rounded mt-4">
       <div class="d-flex justify-content-between col-md-12">
         <h5 class="selectable" @click="towerFilter = ''">All</h5>
@@ -17,7 +17,7 @@
         v-for="t in towerEvents"
         :key="t.id"
         :towerEvent="t"
-        class="col-md-4 selectable"
+        class="col-md-3 selectable"
       />
     </div>
   </div>

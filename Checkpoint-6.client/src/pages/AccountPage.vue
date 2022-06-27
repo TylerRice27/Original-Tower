@@ -9,19 +9,30 @@
     </div>
   </section>
   <section id="event-tickets">
-    <h5>My Tickets for attending Events</h5>
-    <div class="row" v-show="myTickets">
-      <TowerEvent
+    <h5 class="this">My Tickets for attending Events</h5>
+    <div class="row">
+      <!-- <TowerEvent
         v-for="t in towerEvents"
         :key="t.id"
         :towerEvent="t"
-        class="col-md-4 selectable"
-      />
+        class="col-md-4 ms-5 selectable"
+      /> -->
     </div>
-    <!-- v-for="t in towerEvents" :key="t.id" -->
-    <div class="row card">
-      {{ towerEvents }}
+
+    <div
+      class="row this card bg-dark text-center mt-4"
+      v-for="t in towerEvents"
+      :key="t.id"
+    >
+      <div class="col-md-12 p-2">
+        <img class="ticket-image img-fluid" :src="t.event.coverImg" alt="" />
+        <h6 class="p-1">Name</h6>
+        {{ t.event?.name }}
+        <h6 class="p-1 pt-2">Description</h6>
+        {{ t.event?.description }}
+      </div>
     </div>
+    <!-- {{ towerEvents }} -->
     <div class="events-container"></div>
   </section>
 </template>
@@ -51,7 +62,10 @@ export default {
     return {
       account: computed(() => AppState.account),
       myTickets: computed(() => AppState.accountTickets),
+      // this one allows my tickets with no info on it
       towerEvents: computed(() => AppState.accountTickets),
+      // this one allows info on it but wont show any ticket info
+      // on the screen
       // towerEvents: computed(() => AppState.events)
     }
   }
@@ -59,6 +73,15 @@ export default {
 </script>
 
 <style scoped>
+.this {
+  max-width: 500px;
+  margin-left: 50px;
+}
+.ticket-image {
+  max-height: 250px;
+  min-width: 450px;
+}
+
 img {
   max-width: 100px;
 }
