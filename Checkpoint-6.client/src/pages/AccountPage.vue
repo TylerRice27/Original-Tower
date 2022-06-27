@@ -34,7 +34,7 @@
 
         {{ formatDate(t.event?.startDate) }}
       </div>
-      <button @click="deleteTicket" class="btn btn-danger">
+      <button @click="deleteTicket(t.id)" class="btn btn-danger">
         Refund Ticket
       </button>
     </div>
@@ -62,7 +62,7 @@ export default {
     onMounted(async () => {
       try {
         await accountService.getMyTickets()
-        await towerEventsService.getEvents()
+        // await towerEventsService.getEvents()
         // await towerEventsService.getEvent(route.props.id)
       } catch (error) {
         Pop.error(error)

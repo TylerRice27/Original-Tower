@@ -153,6 +153,8 @@ export default {
             // const ticket = AppState.eventTickets.find(e => e.eventId == route.params.id)
             const ticket = { accountId: AppState.account.id, eventId: route.params.id }
             await ticketsService.createTicket(ticket)
+            //This allows the capacity update to the page automatically instead of having to refresh.
+            this.towerEvent.capacity--
             Pop.toast("Enjoy the Event", 'success')
           }
           // NOTE not done here need to make sure they don't already have a ticket
