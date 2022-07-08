@@ -72,9 +72,29 @@ export default {
 
 <style lang="scss" scoped>
 .text-block {
-  background-color: black;
-  color: white;
-  padding-left: 20px;
-  padding-right: 20px;
+  // position: absolute;
+  bottom: 0;
+  background: rgb(0, 0, 0); /* Fallback color */
+  background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+  color: #f1f1f1;
+  width: 100%;
+  padding: 20px;
 }
+
+// .text-block {
+//   background-color: rgb(0, 0, 0); /* Fallback color */
+//   background-color: rgba(0, 0, 0, 0.4); /* Black w/opacity/see-through */
+//   color: white;
+//   font-weight: bold;
+//   border: 3px solid #f1f1f1;
+//   z-index: 2;
+//   text-align: center;
+// }
+
+// .text-block {
+//   background-color: black;
+//   color: white;
+//   padding-left: 20px;
+//   padding-right: 20px;
+// }
 </style>

@@ -28,6 +28,7 @@ export default {
 </script>
 <style lang="scss">
 main {
+  // position: relative;
   overflow-x: hidden;
 }
 

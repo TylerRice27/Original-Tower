@@ -61,6 +61,7 @@
   <!-- this div is creating the side scroll come back and fix -->
   <div class="row mt-2 justify-content-center">
     <form
+      v-if="account.id"
       class="pb-4 d-flex rounded flex-column bg-dark col-md-8"
       @submit.prevent="createComment"
     >
