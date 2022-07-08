@@ -1,40 +1,69 @@
 <template>
-  <form @submit.prevent="createTowerEvent" id="towerEvent-form">
-    <!-- <div class="row"> -->
-    <div class="col-md-12 d-flex justify-content-center m-2">
-      <label>Event Name:</label>
-      <input v-model="editable.name" type="text" required />
+  <form class="m-2" @submit.prevent="createTowerEvent" id="towerEvent-form">
+    <div class="mb-3">
+      <label>Event Name</label>
+      <input
+        class="form-control"
+        v-model="editable.name"
+        type="text"
+        required
+      />
     </div>
-    <div class="col-md-12 d-flex justify-content-center m-2">
-      <label>Event Description:</label>
-      <input v-model="editable.description" type="text" required />
+    <div class="mb-3">
+      <label>Event Description</label>
+      <input
+        class="form-control"
+        v-model="editable.description"
+        type="text"
+        required
+      />
     </div>
-    <div class="col-md-12 d-flex justify-content-center m-2">
-      <label>Cover Image:</label>
-      <input v-model="editable.coverImg" type="text" required />
+    <div class="mb-3">
+      <label>Cover Image</label>
+      <input
+        class="form-control"
+        v-model="editable.coverImg"
+        type="text"
+        required
+      />
     </div>
-    <div class="col-md-12 d-flex justify-content-center m-2">
-      <label>Location:</label>
-      <input v-model="editable.location" type="text" required />
+    <div class="mb-3">
+      <label>Location</label>
+      <input
+        class="form-control"
+        v-model="editable.location"
+        type="text"
+        required
+      />
     </div>
-    <div class="col-md-12 d-flex justify-content-center m-2">
-      <label>Capacity:</label>
-      <input v-model="editable.capacity" type="number" required />
+    <div class="mb-3">
+      <label>Capacity</label>
+      <input
+        class="form-control"
+        v-model="editable.capacity"
+        type="number"
+        required
+      />
     </div>
-    <div class="col-md-12 d-flex justify-content-center m-2">
-      <label>Date:</label>
-      <input v-model="editable.startDate" type="date" required />
+    <div class="mb-3">
+      <label>Date</label>
+      <input
+        class="form-control"
+        v-model="editable.startDate"
+        type="date"
+        required
+      />
     </div>
-    <div class="col-md-12 d-flex justify-content-center m-2">
-      <label>Type:</label>
-      <select v-model="editable.type" required>
+    <div class="mb-3">
+      <label>Type</label>
+      <select class="form-control" v-model="editable.type" required>
         <option value="concert">Concert</option>
         <option value="convention">Convention</option>
         <option value="sport">Sport</option>
         <option value="digital">Digital</option>
       </select>
     </div>
-    <button>Create Event!</button>
+    <button class="btn btn-primary m-1">Create Event!</button>
     <!-- </div> -->
   </form>
 </template>
