@@ -13,7 +13,7 @@
           <h6>Sold Out!</h6>
         </div>
         <h4>{{ towerEvent.name }}</h4>
-        <h5 class="text-success">{{ towerEvent.location }}</h5>
+        <h5 class="text-warning">{{ towerEvent.location }}</h5>
         <h6 class="p-1" v-if="towerEvent.startDate">
           Event Date: {{ formatDate(towerEvent.startDate) }}
         </h6>
