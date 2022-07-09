@@ -29,7 +29,7 @@
       <div class="create-event">
         <button
           v-if="account.id"
-          class="btn btn-primary"
+          class="btn btn-light"
           data-bs-toggle="modal"
           data-bs-target="#create-towerEvent"
           @click="createTowerEvent"

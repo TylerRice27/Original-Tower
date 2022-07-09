@@ -52,7 +52,7 @@
       </div>
     </section>
   </div>
-  <p class="m-3">Who is Attending</p>
+  <p class="m-3 text-white">Who is Attending</p>
   <!-- <div class="row"> -->
   <div class="col-md-12 card bg-dark">
     <Ticket v-for="t in tickets" :key="t.id" :ticket="t" />

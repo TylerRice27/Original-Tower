@@ -1,33 +1,35 @@
 <template>
-  <div class="card elevation-2 text-dark m-3 p-2">
-    <h2 class="d-flex text-end">
+  <div class="card row elevation-2 bg-dark text-white m-3 p-2">
+    <h2 class="d-flex">
       <img
-        class="profile-img selectable me-2"
+        class="profile-img rounded-pill ms-2 selectable me-2"
         :src="comment.creator.picture"
         alt="User profile pic"
       />
       {{ comment.creator.name }}
     </h2>
-    <h4 class="ms-2">{{ comment.body }}</h4>
-
-    <img class="img-fluid" :src="comment.imgUrl" alt="" />
-    <div class="d-flex justify-content-between col-md-12"></div>
-    <button
-      type="button"
-      v-show="comment.creatorId == account.id"
-      class="
-        delete-button
-        col-md-1
-        btn
-        trash
-        btn-danger
-        rounded-pill
-        selectable
-      "
-      @click="removeComment"
-    >
-      <i class="mdi mdi-delete-forever">Delete</i>
-    </button>
+    <div class="col-md-12 d-flex">
+      <h4 class="bord bg-white p-2 text-black">{{ comment.body }}</h4>
+    </div>
+    <div class="d-flex justify-content-end">
+      <button
+        type="button"
+        v-show="comment.creatorId == account.id"
+        class="
+          me-2
+          delete-button
+          col-md-1
+          btn
+          trash
+          btn-danger
+          rounded-pill
+          selectable
+        "
+        @click="removeComment"
+      >
+        <i class="mdi mdi-delete-forever">Delete</i>
+      </button>
+    </div>
   </div>
 </template>
 
@@ -72,4 +74,9 @@ export default {
 
 
 <style lang="scss" scoped>
+.bord {
+  border: solid;
+  border-color: #282828;
+  border-width: 3px;
+}
 </style>
