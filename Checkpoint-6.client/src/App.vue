@@ -27,6 +27,12 @@ export default {
 }
 </script>
 <style lang="scss">
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@600&family=Lobster&family=Permanent+Marker&display=swap");
+
+* {
+  font-family: "Dosis", sans-serif;
+}
+
 main {
   // position: relative;
   overflow-x: hidden;

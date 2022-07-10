@@ -8,6 +8,7 @@
           src="https://static.vecteezy.com/system/resources/thumbnails/000/547/255/small/real-39.jpg"
           height="45"
         />
+        <h4 class="web-title">Tower Event Center</h4>
       </div>
     </router-link>
 
@@ -57,6 +58,10 @@ export default {
 </script>
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@600&family=Lobster&family=Permanent+Marker&display=swap");
+.web-title {
+  font-family: "Dosis", sans-serif;
+}
 a:hover {
   text-decoration: none;
 }

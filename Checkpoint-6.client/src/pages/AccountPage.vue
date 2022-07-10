@@ -8,7 +8,7 @@
       <div id="events-container"></div>
     </section>
     <section id="event-tickets">
-      <h5 class="this">My Tickets for attending Events</h5>
+      <h5 class="this text-white">My Tickets for attending Events</h5>
       <div class="row">
         <!-- <TowerEvent
         v-for="t in towerEvents"
