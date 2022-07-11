@@ -59,7 +59,7 @@
   </div>
   <!-- </div> -->
   <!-- this div is creating the side scroll come back and fix -->
-  <div class="row mt-2 justify-content-center">
+  <div class="row m-4 justify-content-center">
     <form
       v-if="account.id"
       class="pb-4 d-flex rounded flex-column bg-dark col-md-8"
@@ -79,7 +79,7 @@
         <button class="btn btn-primary mt-2">Create!</button>
       </div>
     </form>
-    <Comment v-for="c in comments" :key="c.id" :comment="c" />
+    <Comment class="mt-4" v-for="c in comments" :key="c.id" :comment="c" />
   </div>
 </template>
 
