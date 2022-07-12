@@ -78,6 +78,7 @@ export default {
   background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
   color: #f1f1f1;
   width: 100%;
+
   padding: 20px;
 }
 

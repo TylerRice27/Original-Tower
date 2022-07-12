@@ -8,8 +8,8 @@
           src="https://static.vecteezy.com/system/resources/thumbnails/000/547/255/small/real-39.jpg"
           height="45"
         />
-        <h4 class="web-title">Tower Event Center</h4>
       </div>
+      <h4 class="p-2">Tower Event Center</h4>
     </router-link>
 
     <button
