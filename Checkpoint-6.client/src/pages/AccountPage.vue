@@ -77,9 +77,7 @@ export default {
       // },
       async deleteTicket(ticketId) {
         try {
-          debugger;
-          // if (await Pop.confirm('Cancel Ticket?', 'are you sure?', 'info', 'yes delete it'))
-          {
+          if (await Pop.confirm('Refund Ticket?', 'are you sure you want to cancel?', 'info', 'Yes Refund')) {
             await ticketsService.deleteTicket(ticketId);
           }
         } catch (error) {
