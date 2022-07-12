@@ -10,6 +10,13 @@
         <TowerEventForm />
       </template>
     </Modal>
+
+    <Modal id="editAccount-form">
+      <template #header>Edit Your Account</template>
+      <template #body>
+        <AccountForm />
+      </template>
+    </Modal>
   </main>
   <footer></footer>
 </template>

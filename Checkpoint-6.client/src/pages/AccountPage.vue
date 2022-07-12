@@ -1,7 +1,14 @@
 <template>
   <div>
     <div class="about text-end">
-      <img class="rounded-pill m-3" :src="account.picture" alt="" />
+      <img
+        @click="editAccount"
+        data-bs-toggle="modal"
+        data-bs-target="#editAccount-form"
+        class="rounded-pill selectable m-3"
+        :src="account.picture"
+        alt=""
+      />
     </div>
     <section id="account-events">
       <!-- <h5>My Events</h5> -->
