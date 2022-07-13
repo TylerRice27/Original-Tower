@@ -8,12 +8,11 @@
     <!-- <img class="img-fluid" :src="towerEvent.coverImg" alt="" /> -->
     <div class="text-block">
       <h5>{{ towerEvent.name }}</h5>
-
-      <p>{{ towerEvent.location }}</p>
-      <p v-if="towerEvent.startDate">
+      <p class="m-0">{{ towerEvent.location }}</p>
+      <p class="m-0" v-if="towerEvent.startDate">
         {{ formatDate(towerEvent.startDate) }}
       </p>
-      <p>{{ towerEvent.type }}</p>
+      <p class="m-0">{{ towerEvent.type }}</p>
       <div class="text-end">
         <p>{{ towerEvent.capacity }}</p>
       </div>
@@ -71,6 +70,10 @@ export default {
 
 
 <style lang="scss" scoped>
+.event-card {
+  height: 20em;
+  background-size: cover;
+}
 .text-block {
   // position: absolute;
   bottom: 0;
@@ -78,8 +81,9 @@ export default {
   background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
   color: #f1f1f1;
   width: 100%;
-
-  padding: 20px;
+  display: block;
+  margin-top: 95px;
+  padding: 2px;
 }
 
 // .text-block {

@@ -11,7 +11,12 @@
     </div>
     <div class="mb-3">
       <label>Account Image</label>
-      <input class="form-control" v-model="editable.img" type="text" required />
+      <input
+        class="form-control"
+        v-model="editable.picture"
+        type="text"
+        required
+      />
     </div>
     <button class="btn btn-primary">Save Changes!</button>
   </form>
