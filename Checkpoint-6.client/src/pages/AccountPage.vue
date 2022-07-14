@@ -5,7 +5,7 @@
         @click="editAccount"
         data-bs-toggle="modal"
         data-bs-target="#editAccount-form"
-        class="rounded-pill selectable m-3"
+        class="rounded-pill selectable m-3 img-fluid logo"
         :src="account.picture"
         alt=""
       />
@@ -15,7 +15,9 @@
       <div id="events-container"></div>
     </section>
     <section id="event-tickets">
-      <h5 class="this text-white">My Tickets for attending Events</h5>
+      <div class="row">
+        <h5 class="this text-white">My Tickets for attending Events</h5>
+      </div>
       <div class="row">
         <!-- <TowerEvent
         v-for="t in towerEvents"
@@ -113,7 +115,15 @@ export default {
 };
 </script>
 
-<style scoped>
+<style  lang="scss" scoped>
+.logo {
+  height: 200px;
+  width: 200px;
+  border: solid;
+  border-color: #3ba5dc;
+  border-width: 5px;
+}
+
 @media (min-width: 786px) {
   .this {
     max-width: 500px;

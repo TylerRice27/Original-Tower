@@ -1,6 +1,6 @@
 <template>
   <div
-    class="event-card card m-1"
+    class="event-card card m-2 border-dark elevation-5"
     @click="selectTowerEvent"
     :style="`background-image: url(${towerEvent.coverImg});`"
   >
@@ -71,7 +71,9 @@ export default {
 
 <style lang="scss" scoped>
 .event-card {
-  height: 20em;
+  // height: 20em;
+  background-position: center;
+  background-clip: border-box;
   background-size: cover;
 }
 .text-block {
@@ -82,7 +84,7 @@ export default {
   color: #f1f1f1;
   width: 100%;
   display: block;
-  margin-top: 95px;
+  margin-top: 144px;
   padding: 2px;
 }
 

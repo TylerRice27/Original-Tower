@@ -20,7 +20,7 @@
             :src="account.picture"
             alt="account photo"
             height="40"
-            class="rounded"
+            class="rounded-pill"
           />
           <span class="mx-3 text-warning lighten-10">{{ account.name }}</span>
         </div>
