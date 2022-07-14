@@ -1,8 +1,9 @@
 <template>
-  <div class="tickets">
+  <!-- <div class="tickets"> -->
+  <div class="col-md-12 card bg-dark">
     <div>
       <img
-        class="hv rounded-pill"
+        class="img-tic rounded-pill img-fluid m-1"
         :title="ticket.account?.name"
         :src="ticket.account?.picture"
         alt=""
@@ -39,6 +40,8 @@ export default {
 
 
 <style lang="scss" scoped>
-.hv:hover {
+.img-tic {
+  height: 100px;
+  width: 100px;
 }
 </style>

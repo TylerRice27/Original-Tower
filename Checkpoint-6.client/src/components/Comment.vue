@@ -2,14 +2,14 @@
   <div class="card row elevation-2 bg-dark text-white m-3 p-2">
     <h2 class="d-flex">
       <img
-        class="profile-img rounded-pill ms-2 selectable me-2"
+        class="profile-img img-fluid rounded-pill ms-2 selectable me-2"
         :src="comment.creator.picture"
         alt="User profile pic"
       />
       {{ comment.creator.name }}
     </h2>
     <div class="col-md-12 d-flex">
-      <h4 class="bord bg-white p-2 text-black">{{ comment.body }}</h4>
+      <h4 class="bord bg-white p-2 m-2 text-black">{{ comment.body }}</h4>
     </div>
     <div class="d-flex justify-content-end">
       <button
@@ -74,6 +74,11 @@ export default {
 
 
 <style lang="scss" scoped>
+.profile-img {
+  width: 125px;
+  height: 125px;
+}
+
 .bord {
   border: solid;
   border-color: #282828;

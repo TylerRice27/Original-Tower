@@ -71,7 +71,6 @@ export default {
 
 <style lang="scss" scoped>
 .event-card {
-  // height: 20em;
   background-position: center;
   background-clip: border-box;
   background-size: cover;
@@ -80,8 +79,6 @@ export default {
   background: rgb(0, 0, 0); /* Fallback color */
   background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
   color: #f1f1f1;
-  width: 100%;
-  display: block;
   margin-top: 144px;
   padding: 2px;
   position: bottom;

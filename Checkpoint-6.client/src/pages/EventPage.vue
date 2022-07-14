@@ -54,7 +54,7 @@
   </div>
   <p class="m-3 text-white">Who is Attending</p>
   <!-- <div class="row"> -->
-  <div v-show="tickets" class="col-md-12 card bg-dark">
+  <div>
     <Ticket v-for="t in tickets" :key="t.id" :ticket="t" />
   </div>
   <!-- </div> -->
