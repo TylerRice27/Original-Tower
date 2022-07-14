@@ -24,19 +24,27 @@
 
 
 <script>
-import { ref } from '@vue/reactivity'
+import { computed, ref } from '@vue/reactivity'
 import { accountService } from '../services/AccountService'
 import Pop from '../utils/Pop'
 import { logger } from '../utils/Logger'
+import { watchEffect } from '@vue/runtime-core'
+import { AppState } from '../AppState'
+import { Modal } from 'bootstrap'
 export default {
   setup() {
     const editable = ref({})
+    watchEffect(() => {
+      AppState.account;
+      editable.value = { ...AppState.account };
+    })
     return {
       editable,
+      account: computed(() => AppState.account),
       async editAccount() {
         try {
           await accountService.editAccount(editable.value);
-
+          Modal.getOrCreateInstance(document.getElementById("editAccount-form")).hide()
         } catch (error) {
           logger.error(error)
           Pop.toast(error.message, 'error')

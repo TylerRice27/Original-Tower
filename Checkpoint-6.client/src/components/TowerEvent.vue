@@ -77,8 +77,6 @@ export default {
   background-size: cover;
 }
 .text-block {
-  // position: absolute;
-  bottom: 0;
   background: rgb(0, 0, 0); /* Fallback color */
   background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
   color: #f1f1f1;
@@ -86,6 +84,7 @@ export default {
   display: block;
   margin-top: 144px;
   padding: 2px;
+  position: bottom;
 }
 
 // .text-block {
