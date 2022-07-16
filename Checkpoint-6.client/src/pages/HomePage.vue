@@ -1,6 +1,9 @@
 <template>
-  <div class="home container-fluid">
-    <div class="row card bg-dark rounded mt-4">
+  <div class="home container">
+    <div class="mt-2 justify-content-center img-fluid">
+      <img class="cool img-fluid" src="" alt="" />
+    </div>
+    <div class="row card bg-dark px-3 rounded mt-4">
       <div class="d-flex justify-content-between col-md-12">
         <h5 class="selectable" @click="towerFilter = ''">All</h5>
         <h5 class="selectable" @click="towerFilter = 'concert'">Concerts</h5>
@@ -54,4 +57,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.cool {
+  height: 24vh;
+  width: 100vw;
+  object-fit: cover;
+
+  border: solid;
+  border-color: #3500d3;
+  border-width: 2px;
+}
 </style>
