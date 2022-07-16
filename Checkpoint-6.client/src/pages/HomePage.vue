@@ -1,7 +1,11 @@
 <template>
   <div class="home container">
     <div class="mt-2 justify-content-center img-fluid">
-      <img class="cool img-fluid" src="" alt="" />
+      <img
+        class="cool img-fluid"
+        src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+        alt=""
+      />
     </div>
     <div class="row card bg-dark px-3 rounded mt-4">
       <div class="d-flex justify-content-between col-md-12">
@@ -61,7 +65,7 @@ export default {
   height: 24vh;
   width: 100vw;
   object-fit: cover;
-
+  filter: blur(2px);
   border: solid;
   border-color: #3500d3;
   border-width: 2px;
