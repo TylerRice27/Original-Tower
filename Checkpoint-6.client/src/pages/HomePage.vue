@@ -31,8 +31,8 @@
 <script>
 import { computed, onMounted, ref } from '@vue/runtime-core'
 import Pop from '../utils/Pop'
-import { towerEventsService } from '../services/TowerEventsService'
 import { AppState } from '../AppState'
+import { towerEventsService } from '../services/TowerEventsService'
 export default {
   name: 'Home',
   setup(props) {
@@ -59,8 +59,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.txt {
-}
 .cool {
   height: 24vh;
   width: 100vw;
