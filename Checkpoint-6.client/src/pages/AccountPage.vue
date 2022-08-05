@@ -37,15 +37,21 @@
               :src="t.event.coverImg"
               alt=""
             />
-            <h6 class="p-1">Name</h6>
+            <div class="text-secondary">
+              <h5 class="p-1">Name</h5>
+            </div>
             {{ t.event?.name }}
-            <h6 class="p-1 pt-2">Description</h6>
+            <div class="text-secondary">
+              <h5 class="p-1 pt-2">Description</h5>
+            </div>
             {{ t.event?.description }}
-            <h6 class="p-1 pt-2">Event Date</h6>
+            <div class="text-secondary">
+              <h5 class="p-1 pt-2">Event Date</h5>
+            </div>
 
             {{ formatDate(t.event?.startDate) }}
           </div>
-          <button @click="deleteTicket(t.id)" class="btn btn-danger">
+          <button @click="deleteTicket(t.id)" class="m-2 btn btn-danger">
             Refund Ticket
           </button>
         </div>
@@ -67,6 +73,7 @@ import { ticketsService } from "../services/TicketsService";
 import { logger } from "../utils/Logger";
 
 export default {
+
   name: "Account",
 
   setup(props) {

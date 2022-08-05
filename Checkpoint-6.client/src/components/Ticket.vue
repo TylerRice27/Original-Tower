@@ -3,7 +3,7 @@
   <div class="col-md-12 card bg-dark">
     <div>
       <img
-        class="img-tic rounded-pill img-fluid m-1"
+        class="img-tic rounded-pill selectable img-fluid m-1"
         :title="ticket.account?.name"
         :src="ticket.account?.picture"
         alt=""
