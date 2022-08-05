@@ -5,7 +5,7 @@
         <img
           class="logo"
           alt="logo"
-          src="https://static.vecteezy.com/system/resources/thumbnails/000/547/255/small/real-39.jpg"
+          src="../assets/img/towerlogowhite.png"
           height="45"
         />
       </div>
