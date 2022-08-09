@@ -40,6 +40,11 @@ export default {
   font-family: "Dosis", sans-serif;
 }
 
+.modal-header {
+  background-color: #3500d3;
+  color: whitesmoke;
+}
+
 main {
   // position: relative;
   overflow-x: hidden;
