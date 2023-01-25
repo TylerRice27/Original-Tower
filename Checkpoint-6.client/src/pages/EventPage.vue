@@ -1,4 +1,4 @@
-<template>
+<template class="container-fluid" >
   <div class="event-page card bg-dark m-3">
     <section class="d-flex m-3 row" id="towerEvent">
       <img class="tower-pic img-fluid" :src="towerEvent.coverImg" alt="" />
@@ -37,6 +37,9 @@
         <button v-else-if="isAttending" class="btn btn-warning mt-5" disabled>
           Already Attending <i class="mdi mdi-thumb-up"></i>
         </button>
+        <button v-else-if="!account.id" class="btn btn-warning mt-5" disabled>
+          Login to Attend Event <i class="mdi mdi-thumb-up"></i>
+        </button>
         <button v-else class="btn btn-primary mt-5" @click="createTicket">
           Attend <i class="mdi mdi-thumb-up"></i>
         </button>
@@ -54,7 +57,7 @@
   </div>
   <p class="m-3 text-white">Who is Attending</p>
   <!-- <div class="row"> -->
-  <div>
+  <div v-if="tickets[0]" class="row card bg-dark flex-row">
     <Ticket v-for="t in tickets" :key="t.id" :ticket="t" />
   </div>
   <!-- </div> -->
@@ -124,7 +127,7 @@ export default {
 
       // Try to finish this function later after writing out my account page
 
-      isAttending: computed(() => AppState.tickets.find(t => AppState.activeEvent.id == t.eventId)),
+      isAttending: computed(() => AppState.tickets.find(t => t.accountId == AppState.account.id)),
 
       // TODO THIS IS ONE OF MY LAST REQUIREMENTS TO PASS
       // AppState.tickets.find(t => t.id == accountId)

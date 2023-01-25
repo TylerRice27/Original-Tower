@@ -6,21 +6,21 @@
   >
     <!-- this is not my image anymore not is on my background image -->
     <!-- <img class="img-fluid" :src="towerEvent.coverImg" alt="" /> -->
-    <div class="text-block">
+    <div class="text-block p-2">
       <h5>{{ towerEvent.name }}</h5>
       <p class="m-0">{{ towerEvent.location }}</p>
       <p class="m-0" v-if="towerEvent.startDate">
         {{ formatDate(towerEvent.startDate) }}
       </p>
-      <p class="m-0">{{ towerEvent.type }}</p>
+      <p class="m-0 capitalize">{{ towerEvent.type }}</p>
       <div class="text-end">
         <p>{{ towerEvent.capacity }}</p>
       </div>
       <!-- come back to this to fix the sold out tag not working -->
-      <div v-if="towerEvent.capacity == 0" class="bg-danger rounded">
+      <div v-if="towerEvent.capacity == 0" class="bg-danger p-1 rounded">
         <h6>Sold Out!</h6>
       </div>
-      <div v-if="towerEvent.isCanceled == true" class="bg-danger rounded">
+      <div v-if="towerEvent.isCanceled == true" class="bg-danger p-1 rounded">
         <h6>Cancelled!</h6>
       </div>
     </div>
@@ -82,6 +82,10 @@ export default {
   margin-top: 144px;
   padding: 2px;
   position: bottom;
+}
+
+.capitalize {
+  text-transform: capitalize;
 }
 
 // .text-block {

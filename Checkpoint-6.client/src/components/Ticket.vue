@@ -1,15 +1,15 @@
 <template>
   <!-- <div class="tickets"> -->
-  <div class="col-md-12 card bg-dark">
-    <div>
-      <img
-        class="img-tic rounded-pill selectable img-fluid m-1"
-        :title="ticket.account?.name"
-        :src="ticket.account?.picture"
-        alt=""
-      />
-    </div>
+  <!-- <div class="row card bg-dark"> -->
+  <div class="col-md-1">
+    <img
+      class="img-tic rounded-pill selectable img-fluid m-1"
+      :title="ticket.account?.name"
+      :src="ticket.account?.picture"
+      alt=""
+    />
   </div>
+  <!-- </div> -->
 </template>
 
 
